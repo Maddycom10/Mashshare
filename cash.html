@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en , es" , icon =c:\Users\HP\Documents\Mcash\Mash.png>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes" icon =c:\Users\HP\Documents\Mcash\Mash.png>
+    <title>MCashshare ltd</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            font-family: 'Nunito Sans', sans-serif;
+            color: #fff;
+            margin: 0;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a1b9a, #4a148c);
+            color: #fff;
+        }
+        .header img {
+            width: 100px;
+            border-radius: 20%;
+        }
+        .header h1 {
+            margin: 10px 0;
+        }
+        .main-container, .dashboard-container, .profile-container, .promotion-container {
+            padding: 20px;
+            display: none;
+        }
+        .main-container.active, .dashboard-container.active, .profile-container.active, .promotion-container.active {
+            display: block;
+        }
+        .card {
+            background: #1f1b2c;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .btn-primary, .btn-secondary {
+            background: #6a1b9a;
+            border: none;
+            padding: 10px 15px;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .btn-primary:hover, .btn-secondary:hover {
+            background: #8e24aa;
+        }
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #1f1b2c;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .tab-bar .tab {
+            text-align: center;
+            color: #cfcfcf;
+            font-size: 0.8rem;
+        }
+        .tab-bar .tab i {
+            font-size: 1.5rem;
+            color: #a76fff;
+        }
+        .tab-bar .tab.active i {
+            color: #6a1b9a;
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #1f1b2c;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+        }
+        .modal-content h4 {
+            color: #a76fff;
+            margin-bottom: 10px;
+        }
+        .modal-content .btn {
+            margin: 5px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .btn-yes {
+            background: #ff5252;
+        }
+        .btn-yes:hover {
+            background: #ff1744;
+        }
+        .btn-no {
+            background: #6a1b9a;
+        }
+        .btn-no:hover {
+            background: #8e24aa;
+        }
+        /* Help Contact Styling */
+        .help-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .help-contact a {
+            color: #a76fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .help-contact a:hover {
+            color: #ff5252;
+        }
+        .help-contact i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        .earnings-box {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .earnings-box h3 {
+            color: #a76fff;
+            margin-bottom: 10px;
+        }
+        .tasks-box {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .tasks-box h4 {
+            color: #ff5252;
+        }
+        .task-item {
+            display: incline-block;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+        .task-item button {
+            background:rgb(54, 5, 85);
+            border: 20px;
+            padding: 5px 10px;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+         .task-item button:hover {
+            background: #8e24aa;
+        }
+      /* Help Contact Styling */
+       .withdrawal button {
+            background-color: #6a1b9a; /* Primary background color */
+            color: #fff; /* Text color */
+            padding: 12px 20px; /* Padding for better spacing */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 1rem; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for background and transform */
+            display: inline-block; /* Aligns the button correctly */
+            margin-top: 20px; /* Space above the button */
+        }
+        .withdrawal button:hover {
+            background-color: #8e24aa; /* Darker shade on hover */
+            transform: translateY(-2px); /* Slight lift effect on hover */
+        }
+        .withdrawal button:focus {
+            outline: none; /* Remove outline on focus */
+            box-shadow: 0 0 5px rgba(106, 27, 154, 0.5); /* Add shadow effect on focus */
+        }
+        /* Promotion Container */
+        .promotion-container {
+            display: none;
+        }
+        .promotion-container.active {
+            display: block;
+        }
+        .promotion-container-content {
+            background: #1f1b2c;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+        }
+        .promotion-container-content input {
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            background: #2a2a2a;
+            color: #fff;
+        }
+       
+    </style>
+    <script>
+        let userEmail = ""; // Store the email dynamically
+        let bankDetails = null; // Store the bank details dynamically
+        let promotionLinkGenerated = false; // Track if the promotion link has been generated
+        let promotionLink = ""; // Store the generated link
+
+        function validateLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+
+    // List of valid credentials
+    const validUsers = [
+        { username: "mcashshare@gmail.com", password: "mcashshare" },
+        { username: "mcashshare1@gmail.com", password: "mcashshare111" },
+        { username: "mcashshare2@gmail.com", password: "mcashshare112" },
+        { username: "mcashshare3@gmail.com", password: "mcashshare113" },
+        { username: "mcashshare4@gmail.com", password: "mcashshare114" },
+        { username: "mcashshare5@gmail.com", password: "mcashshare115" },
+    ];
+
+    // Check if the entered credentials match any of the valid ones
+    const isValid = validUsers.some(
+        user => user.username === username && user.password === password
+    );
+
+    if (isValid) {
+        const header = document.querySelector('.header h1');
+        header.textContent = "WELCOME TO MCASH - CLICK & EARN";
+
+        // Switch to dashboard interface
+        document.querySelector('.main-container').classList.remove('active');
+        document.querySelector('.dashboard-container').classList.add('active');
+        showNotification("Sign in successful!");
+    } else {
+        showNotification("Account not yet verified! Please contact the help desk.");
+    }
+}
+
+
+        function switchToDashboard() {
+            document.querySelector('.profile-container').classList.remove('active');
+            document.querySelector('.promotion-container').classList.remove('active');
+            document.querySelector('.dashboard-container').classList.add('active');
+        }
+
+        function switchToProfile() {
+            document.querySelector('.dashboard-container').classList.remove('active');
+            document.querySelector('.promotion-container').classList.remove('active');
+            document.querySelector('.profile-container').classList.add('active');
+            // Display user email in the profile
+            document.getElementById('profile-email').textContent = userEmail;
+            // Show bank details if available
+            if (bankDetails) {
+                document.getElementById('bank-name-display').textContent = bankDetails.name;
+                document.getElementById('bank-account-number-display').textContent = bankDetails.accountNumber;
+                document.getElementById('bank-holder-name-display').textContent = bankDetails.holderName;
+                document.getElementById('bank-details-form').style.display = 'none';
+                document.getElementById('update-bank-details').style.display = 'block';
+            } else {
+                document.getElementById('bank-details-form').style.display = 'block';
+                document.getElementById('update-bank-details').style.display = 'none';
+            }
+        }
+ function updateEmail() {
+            const newEmail = prompt("Enter your new email address:");
+            if (newEmail) {
+                userEmail = newEmail; // Update email dynamically
+                alert("Email updated successfully!");
+                document.getElementById('profile-email').textContent = userEmail;
+            }
+        }
+
+        function saveBankDetails() {
+            const bankName = document.getElementById('bank-name').value;
+            const accountNumber = document.getElementById('account-number').value;
+            const holderName = document.getElementById('holder-name').value;
+            if (bankName && accountNumber && holderName) {
+                bankDetails = { name: bankName, accountNumber: accountNumber, holderName: holderName };
+                showNotification("Bank details saved successfully!");
+                switchToProfile(); // Switch to profile to display bank details
+            } else {
+                showNotification("Please fill in all fields.");
+            }
+        }
+
+        function updateBankDetails() {
+            document.getElementById('bank-details-form').style.display = 'block';
+            document.getElementById('update-bank-details').style.display = 'none';
+        }
+        function showPromotion() {
+            if (!promotionLinkGenerated) {
+                promotionLink = generatePromotionLink();
+                promotionLinkGenerated = true; // Set the flag to true
+            }
+            document.getElementById('promotion-link').value = promotionLink; // Set the link in the input
+            document.querySelector('.dashboard-container').classList.remove('active');
+            document.querySelector('.promotion-container').classList.add('active'); // Show the promotion container
+        }
+
+        function generatePromotionLink() {
+            return "https://mcashshare.com/promo/" + Math.random().toString(36).substr(2, 9); // Example link generation
+        }
+
+        function copyToClipboard() {
+            const linkInput = document.getElementById('promotion-link');
+            linkInput.select();
+            document.execCommand('copy');
+            showNotification("Promotion link copied to clipboard!");
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.background = '#1f1b2c';
+            notification.style.color = '#fff';
+            notification.style.padding = '15px';
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.3)';
+            notification.style.zIndex = '1000';
+            notification.style.transition = 'opacity 0.3s';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        let totalEarnings = 0;
+
+        function completeTask(amount) {
+            const confirmTask = confirm("Do you want to perform this task to earn NGN " + amount + "?");
+
+            if (confirmTask) {
+                showNotification("Task accepted. Please wait while it's being processed...");
+                setTimeout(() => {
+                    totalEarnings += amount;
+                    document.getElementById('total-earnings').textContent = "NGN " + totalEarnings;
+
+                    showNotification("You have earned NGN " + amount + "!");
+
+                }, 3000); // few minutes
+            } else {
+                showNotification("Task successfully canceled.");
+            }
+        }
+         function imcompleteTask(amount) {
+            const confirmTask = confirm("Don't you want to perform this task to earn NGN " + amount + "?");
+
+            if (confirmTask) {
+                showNotification("Task Cancelled. Please wait ...");
+                setTimeout(() => {
+                    totalEarnings = amount;
+                    document.getElementById('total-earnings').textContent = "NGN " + totalEarnings;
+
+                    showNotification("You didn't earned NGN " + amount + "!");
+
+                }, 180000); // 3 minutes
+            } else {
+                showNotification("Rejection request canceled. Please Wait...");
+            }
+        }
+    function showWithdrawalModal() {
+            document.querySelector('.withdrawal').style.display = 'flex';
+        }
+
+        function hideWithdrawalModal() {
+            document.querySelector('.withdrawal').style.display = 'none';
+        }
+
+        function confirmWithdrawal(amount) {
+            if (!bankDetails) {
+                showNotification("Please save your bank details before withdrawing.");
+                return;
+            }
+            if (totalEarnings < 1000) {
+                showNotification("You need at least NGN 1000 to withdraw.");
+
+                return;
+            }
+            if (totalEarnings < amount) {
+                showNotification("You do not have enough earnings for this withdrawal.");
+                return;
+            }
+            showNotification("Your request is being processed for NGN " + amount + "...");
+
+            setTimeout(() => {
+                totalEarnings -= amount; // Deduct the withdrawn amount
+                document.getElementById('total-earnings').textContent = "NGN " + totalEarnings.toFixed(2); // Update displayed earnings
+
+                showNotification("Withdrawal of NGN " + amount + " successful! Your earnings have been updated.");
+
+                hideWithdrawalModal();
+            }, 2000); // Simulate a 2-second processing time
+        }
+        function showLogoutModal() {
+            document.querySelector('.modal').style.display = 'flex';
+        }
+
+        function hideLogoutModal() {
+            document.querySelector('.modal').style.display = 'none';
+        }
+
+        function logout() {
+            // Clear user data and redirect to login
+            userEmail = "";
+            bankDetails = null;
+            document.querySelector('.profile-container').classList.remove('active');
+            document.querySelector('.main-container').classList.add('active');
+            hideLogoutModal();
+            showNotification("You have been logged out. Please sign in again.");
+        }
+        
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <img src="c:\Users\HP\Documents\Mcash\Mash.png" alt="MCash Logo">
+        <h1>-Earning Task</h1>
+    </div>
+    <!-- Login Interface -->
+    <div class="main-container active">
+        <div class="card">
+            <h3>Account Login</h3>
+            <form onsubmit="validateLogin(event)">
+                <input type="text" id="login-username" class="form-control" placeholder="Userid, Email or Phone">
+                <input type="password" id="login-password" class="form-control" placeholder="Password">
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </form>
+            <p class="help-contact">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mcashshare@gmail.com" target="_blank">
+
+                    <i class="fas fa-headset"></i>
+                    <strong>Contact Help Desk</strong>
+                </a>
+            </p>
+            <h5>Note: Mcash is a platform which allows earners earn NGN
+20,000 weekly.
+            <br>if you haven't verified your account click on the HELP DESK button to contact our personnel.</h5>
+        </div>
+    </div>
+    <!-- Dashboard Interface -->
+    <div class="dashboard-container">
+        <div class="card">
+            <h3><left >Welcome to MCash Dashboard</left ></h3>
+             <h3><left>Once you Sign in, it is very importantsnot to log out from the website<br>else you will might lose all your asset.<br>don't share your login with anyone.</left></h3>
+
+        </div>
+        <div class="earnings-box">
+            <h3 style="text-align: left;">Total Earnings</h3>
+            <h1><p id="total-earnings" style="text-align: left;">NGN
+0.00</p></h1>
+           
+            
+ <div class="withdrawal">
+        <div class="withdrawal-modal-content">
+            <h4>Select Withdrawal Amount:</h4>
+            <button onclick="confirmWithdrawal(1000)"> NGN
+1000</button>
+            <button onclick="confirmWithdrawal(5000)"> NGN
+5000</button>
+            <button onclick="confirmWithdrawal(10000)"> NGN
+10000</button>
+            <button onclick="confirmWithdrawal(50000)"> NGN
+50000</button>
+            <button onclick="confirmWithdrawal(100000)"> NGN
+100000</button>
+            <button onclick="showWithdrawalModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+             <div>
+  <left> <h1>Withdrawal Instructions:</h1> </left>
+<h4>Minimum withdrawal amount is NGN
+1000
+<br>Maximum withdrawal amount is NGN
+10000000</h4>
+<h4>You can only withdraw cash 1 times a day.<br> Please check carefully whether the information is entered correctly.<br>If the withdrawal is not received, please contact customer service</h4></left>
+</div>
+        <div class="tasks-box">
+            <h4>Perform Tasks to Earn</h4>
+            <h3>Section 1:</h3>
+            <div class="task-item"
+                <span><strong>Watch a Video:</strong></span><p>To perform this task, click on the  accept button below to watch a video and earn NGN
+50</p>
+                <button onclick="completeTask(50)">Accept</button>
+                <button onclick="imcompleteTask(0)">Cancel</button>
+            </div>
+            <div class="task-item">
+                <span><strong>Share a Post:</strong></span><p>To perform this task, click on the  accept button below to Share a Post and earn NGN
+30</p>
+                <button onclick="completeTask(30)">Accept</button>
+                <button onclick="imcompleteTask(0)">Cancel</button>
+            </div>
+            <div class="task-item">
+                <span><strong>Complete a Survey:<strong></span><p>To perform this task, click on the  accept button below to Complete a Survey and earn NGN
+10</p>
+                <button onclick="completeTask(10)" >Accept</button>
+                <button onclick="imcompleteTask(0)">Cancel</button>
+            </div>
+            <h3>Section 2:</h3>
+             <div class="task-item">
+                <span><strong>Watch a Video:</strong></span><p>To perform this task, click on the  accept button below to watch a video and earn NGN 100 </p>
+
+                <button onclick="completeTask(100)">Accept</button>
+                <button onclick="imcompleteTask(0)">Cancel</button>
+            </div>
+            <div class="task-item">
+                <span><strong>Share a Post:</strong></span><p>To perform this task, click on the  accept button below to Share a Post and earn NGN
+30</p>
+                <button onclick="completeTask(30)">Accept</button>
+                <button onclick="imcompleteTask(0)">Cancel</button>
+            </div>
+            <div class="task-item">
+                <span><strong>Complete a Survey:<strong></span><p>To perform this task, click on the  accept button below to Complete a Survey and earn NGN
+10</p>
+                <button onclick="completeTask(10)" >Accept</button>
+                <button onclick="imcompleteTask(0)">Cancel</button>
+            </div>
+        </div>
+        <div class="tab-bar">
+            <div class="tab" onclick="showPromotion()">
+                <i class="fas fa-bullhorn"></i>
+                <p>Promotion</p>
+            </div>
+            <div class="tab active">
+                <i class="fas fa-home"></i>
+                <p>Home</p>
+            </div>
+            <div class="tab" onclick="switchToProfile()">
+                <i class="fas fa-user"></i>
+                <p>Me</p>
+            </div>
+        </div>
+    </div>
+    <!-- Promotion Interface -->
+    <div class="promotion-container">
+        <div class="promotion-container-content">
+            <h4><strong>Referral Code:</strong></h4>
+            <input type="text" id="promotion-link" readonly>
+            <button class="btn-primary" onclick="copyToClipboard()">Copy Link</button>
+            <h4><strong><p style="text-align: left;">Invitation Steps:</strong></h4><p style="text-align: left;">
+
+1. Click the "Copy" button to copy the link or choose other sharing methods.<br>
+
+2. Share the link with your friends and make sure they register using the link you shared.<br>
+
+3. After your friends register and complete the task, you will receive additional rebates.</p>
+            
+        </div>
+        <div class="tab-bar">
+            <div class="tab" onclick="showPromotion()">
+                <i class="fas fa-bullhorn"></i>
+                <p>Promotion</p>
+            </div>
+            <div class="tab" onclick="switchToDashboard()">
+                <i class="fas fa-home"></i>
+                <p>Home</p>
+            </div>
+            <div class="tab" onclick="switchToProfile()">
+                <i class="fas fa-user"></i>
+                <p>Me</p>
+            </div>
+        </div>
+    </div>
+    <!-- Profile Interface -->
+    <div class="profile-container">
+        <div class="card">
+            <h3>Profile</h3>
+            <p><strong>Email:</strong> <span id="profile-email"></span></p>
+            <button class="btn-secondary" onclick="updateEmail()">Update Email</button>
+            <!-- Bank Details Form -->
+            <div id="bank-details-form">
+                <h4>Bank Details</h4>
+                <input type="text" id="bank-name" class="form-control" placeholder="Bank Name">
+                <input type="text" id="account-number" class="form-control" placeholder="Account Number">
+                <input type="text" id="holder-name" class="form-control" placeholder="Account Holder's Name">
+                <button class="btn-primary" onclick="saveBankDetails()">Save Bank Details</button>
+            </div>
+        
+            <!-- Bank Details Display -->
+            <div id="bank-details-display" style="display: show;">
+                <p><strong>Bank Name:</strong> <span id="bank-name-display"></span></p>
+                <p><strong>Account Number:</strong> <span id="bank-account-number-display"></span></p>
+                <p><strong>Account Holder's Name:</strong> <span id="bank-holder-name-display"></span></p>
+                <button class="btn-secondary" id="update-bank-details" onclick="updateBankDetails()" style="display: none;">Update Bank Details</button>
+            </div>
+            <button class="btn-secondary" onclick="switchToDashboard()">Back</button>
+            <button class="btn-primary" onclick="showLogoutModal()">Log Out</button>
+        </div>
+    </div>
+    <!-- Logout Confirmation Modal -->
+    <div class="modal">
+        <div class="modal-content">
+            <h4>ARE YOU SURE YOU WANT TO LOG OUT OF MCASH?</h4>
+            <button class="btn btn-yes" onclick="logout()">Yes</button>
+            <button class="btn btn-no" onclick="hideLogoutModal()">No</button>
+        </div>
+    </div>
+</body>
+</html>
